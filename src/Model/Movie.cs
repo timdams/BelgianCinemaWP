@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,18 @@ namespace Belgian_Cinema.Model
     {
         public string Title { get; set; }
         public ObservableCollection<Schedule> Schedules { get; set; }
+
+        public Visibility PlayingToday { 
+            get
+            {
+                string now = string.Format("{0:00}", DateTime.Now.Day) + "/" + DateTime.Now.Month;
+                var q = (from s in Schedules where s.Date == now select s).FirstOrDefault();
+                if (q != null)
+                    return Visibility.Visible;
+                else return Visibility.Collapsed;
+            }
+        }
+        
         public string Duration { get; set; }
 
       
