@@ -1,0 +1,248 @@
+﻿<
+               <option value="896">
+                       Acinapolis</option>
+               <option value="690">
+                       Actor's Studio</option>
+               <option value="1001">
+                       Albert</option>
+               <option value="870">
+                       Ariston</option>
+               <option value="936">
+                       Aventure (Barvaux)</option>
+               <option value="693">
+                       Aventure Ciné Confort</option>
+               <option value="805">
+                       Belgica</option>
+               <option value="1068">
+                       Belgium Pier Cinema</option>
+               <option value="968">
+                       Beverly Screens</option>
+               <option value="931">
+                       Bouillon-Ciné</option>
+               <option value="973">
+                       Buda Kunstencentrum</option>
+               <option value="1080">
+                       CC Zwaneberg</option>
+               <option value="706">
+                       CINEMATEK</option>
+               <option value="889">
+                       Cameo 2</option>
+               <option value="778">
+                       Cartoon's</option>
+               <option value="1007">
+                       Central</option>
+               <option value="963">
+                       Cine Liberty</option>
+               <option value="970">
+                       Cine Rialto</option>
+               <option value="981">
+                       Cine Star</option>
+               <option value="1055">
+                       Cine Starlight</option>
+               <option value="1067">
+                       CineBelval</option>
+               <option value="1013">
+                       Cinema Capitole</option>
+               <option value="978">
+                       Cinema Koksijde</option>
+               <option value="966">
+                       Cinema Lumière</option>
+               <option value="810">
+                       Cinema Plaza</option>
+               <option value="971">
+                       Cinema Rio</option>
+               <option value="823">
+                       Cinema Zed</option>
+               <option value="780">
+                       Cinema Zuid</option>
+               <option value="901">
+                       Ciney Chaplin</option>
+               <option value="754">
+                       Ciné Centre</option>
+               <option value="903">
+                       Ciné Chaplin</option>
+               <option value="923">
+                       Ciné Espace</option>
+               <option value="853">
+                       Ciné Kursaal</option>
+               <option value="909">
+                       Ciné Le Parc</option>
+               <option value="951">
+                       Ciné-Dour</option>
+               <option value="691">
+                       Cinéma Arenberg</option>
+               <option value="1064">
+                       Cinéma Cameo (Tamines)</option>
+               <option value="739">
+                       Cinéma Le Stockel</option>
+               <option value="1037">
+                       Cinéma Théâtre de Spa</option>
+               <option value="759">
+                       Cinéma l'Etoile</option>
+               <option value="928">
+                       Cinémaacher</option>
+               <option value="921">
+                       Cinépointcom Bastogne</option>
+               <option value="908">
+                       Cinépointcom Charleroi</option>
+               <option value="902">
+                       Cinépointcom Couvin</option>
+               <option value="929">
+                       Cinépointcom Libramont</option>
+               <option value="935">
+                       Cinépointcom Marche</option>
+               <option value="883">
+                       Cinépointcom Verviers</option>
+               <option value="758">
+                       Cinéscope Louvain-la-Neuve</option>
+               <option value="983">
+                       Cityscoop</option>
+               <option value="880">
+                       Corso</option>
+               <option value="984">
+                       De Keizer</option>
+               <option value="890">
+                       Eldorado</option>
+               <option value="845">
+                       Euroscoop Genk</option>
+               <option value="848">
+                       Euroscoop Lanaken</option>
+               <option value="849">
+                       Euroscoop Maasmechelen</option>
+               <option value="876">
+                       Excelsior</option>
+               <option value="937">
+                       Faubourg Saint-Antoine</option>
+               <option value="1004">
+                       Feestpaleis</option>
+               <option value="725">
+                       Flagey</option>
+               <option value="1008">
+                       Focus Cinema</option>
+               <option value="940">
+                       Imagix Mons</option>
+               <option value="952">
+                       Imagix Tournai</option>
+               <option value="874">
+                       Kihuy</option>
+               <option value="1021">
+                       Kinepolis Brugge</option>
+               <option value="716">
+                       Kinepolis Brussel</option>
+               <option value="993">
+                       Kinepolis Gent</option>
+               <option value="838">
+                       Kinepolis Hasselt</option>
+               <option value="765">
+                       Kinepolis Imagibraine</option>
+               <option value="974">
+                       Kinepolis Kortrijk</option>
+               <option value="824">
+                       Kinepolis Leuven</option>
+               <option value="862">
+                       Kinepolis Liège</option>
+               <option value="1046">
+                       Kinepolis Oostende</option>
+               <option value="871">
+                       Kinosch</option>
+               <option value="958">
+                       L'Ecran Ath</option>
+               <option value="899">
+                       L'Eventail</option>
+               <option value="863">
+                       Le Churchill</option>
+               <option value="925">
+                       Le Foyer</option>
+               <option value="886">
+                       Le Globe Malmedy</option>
+               <option value="864">
+                       Le Parc</option>
+               <option value="834">
+                       Le Paris</option>
+               <option value="947">
+                       Le Stuart</option>
+               <option value="875">
+                       Les Variétés (Amay)</option>
+               <option value="873">
+                       Les Variétés (Waremme)</option>
+               <option value="787">
+                       Metropolis</option>
+               <option value="745">
+                       Movy-Club</option>
+               <option value="707">
+                       Nova</option>
+               <option value="809">
+                       Nova (Nijlen)</option>
+               <option value="1015">
+                       Orion</option>
+               <option value="869">
+                       Palace (Liège)</option>
+               <option value="1005">
+                       Palace Aalst</option>
+               <option value="926">
+                       Patria</option>
+               <option value="943">
+                       Plaza Art</option>
+               <option value="938">
+                       Plaza Hotton</option>
+               <option value="1009">
+                       Prabbeli</option>
+               <option value="944">
+                       QuevyScope</option>
+               <option value="1063">
+                       Sauvenière</option>
+               <option value="1003">
+                       Scala</option>
+               <option value="1039">
+                       Service Cinema 4 You</option>
+               <option value="996">
+                       Siniscoop</option>
+               <option value="994">
+                       Sphinx</option>
+               <option value="835">
+                       Studio Diest</option>
+               <option value="804">
+                       Studio Geel</option>
+               <option value="792">
+                       Studio Rubens</option>
+               <option value="995">
+                       Studio Skoop</option>
+               <option value="729">
+                       Styx</option>
+               <option value="920">
+                       Sura</option>
+               <option value="844">
+                       TheRoxyTheatre</option>
+               <option value="786">
+                       UGC Antwerpen</option>
+               <option value="713">
+                       UGC De Brouckère</option>
+               <option value="730">
+                       UGC Toison d'Or</option>
+               <option value="769">
+                       Utopia</option>
+               <option value="776">
+                       Utopolis</option>
+               <option value="833">
+                       Utopolis Aarschot</option>
+               <option value="857">
+                       Utopolis Lommel</option>
+               <option value="1079">
+                       Utopolis Longwy</option>
+               <option value="813">
+                       Utopolis Mechelen</option>
+               <option value="801">
+                       Utopolis Turnhout</option>
+               <option value="806">
+                       Variétés (Lier)</option>
+               <option value="731">
+                       Vendôme</option>
+               <option value="888">
+                       Versailles</option>
+               <option value="858">
+                       Walkino</option>
+               <option value="762">
+                       Wellington</option>
+               <option value="1028">
+                       Wolubilis</option>
+               </select>
