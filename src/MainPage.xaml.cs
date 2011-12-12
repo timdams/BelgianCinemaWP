@@ -28,11 +28,8 @@ namespace Belgian_Cinema
         {
             InitializeComponent();
             lbresult.ItemsSource = movieList;
-            
-                UpdateMovieList();
-            
-                
-           
+           // UpdateMovieList();
+      
         }
 
         private void UpdateMovieList()
@@ -171,6 +168,14 @@ namespace Belgian_Cinema
                                 newMovie.CoverUrl = covernode.Element("a").Element("img").GetAttributeValue("src", "n/a");
                             }
 
+                            //Shortinfo
+                            var infos =
+                                (from p in movieNode.Descendants("div")
+                                 where p.GetAttributeValue("class", "n/a") == "moviePersonList"
+                                 select p).FirstOrDefault().Elements("p").FirstOrDefault().InnerText.Trim().Replace(
+                                     "  ", "").Replace("\n", " ").Replace("&hellip;", "...");
+                            newMovie.ShortInfo = infos;
+
                             //Duration
                             var dur = (from p in movieNode.Descendants("div")
                                        where p.GetAttributeValue("class", "o") == "scheduleMovieInfos"
@@ -248,6 +253,10 @@ namespace Belgian_Cinema
                             movieList.Add(newMovie);
                         }
                     }
+                }
+                if (movieList.Count() == 0)
+                {
+                    MessageBox.Show("This theater is not showing any movies this week.");
                 }
             }
             catch (Exception ex)

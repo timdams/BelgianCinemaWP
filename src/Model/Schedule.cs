@@ -70,5 +70,14 @@ namespace Belgian_Cinema.Model
             AudioVersie = "N/A";
             VideoVersie = "N/A";
         }
+
+        public override string ToString()
+        {
+            string s = Day + " " + Date + ": ";
+            foreach (var hours in this.ShowHours)
+                s += hours + "  ";
+
+            return s;
+        }
     }
 }

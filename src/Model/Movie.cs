@@ -17,7 +17,21 @@ namespace Belgian_Cinema.Model
 {
     public class Movie: INotifyPropertyChanged
     {
-        public string Title { get; set; }
+        public Movie()
+        {
+            Title = "UNKNOW ERROR";
+            Duration = "N/A";
+            Schedules = new ObservableCollection<Schedule>();
+            ShortInfo = "N/A";
+        }
+
+        public string ShortInfo { get; set; }
+
+        private string title;
+        public string Title { get { return title; }  set { title = value.Replace("&#039;", "'").Trim(); }
+        }
+        
+        
         public ObservableCollection<Schedule> Schedules { get; set; }
 
         public Visibility PlayingToday { 
@@ -33,10 +47,6 @@ namespace Belgian_Cinema.Model
         
         public string Duration { get; set; }
 
-      
-
-
-
         public string CoverUrl { get; set; }
         public string MoreInfo
         {
@@ -45,13 +55,7 @@ namespace Belgian_Cinema.Model
         }
 
         private string moreInfo;
-        public Movie()
-        {
-            Title = "UNKNOW ERROR";
-            Duration = "N/A";
-            Schedules = new ObservableCollection<Schedule>();
-           
-        }
+      
 
         public override string ToString()
         {

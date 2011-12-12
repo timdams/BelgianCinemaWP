@@ -123,6 +123,7 @@
     <Content Include="Content\About\Data.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="images\email.png" />
     <Content Include="images\appbar.feature.settings.rest.png" />
     <Content Include="images\Logo_Cinebel4.jpg" />
     <Content Include="images\refresh.png" />
