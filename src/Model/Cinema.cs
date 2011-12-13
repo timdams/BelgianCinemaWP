@@ -19,7 +19,7 @@ namespace Belgian_Cinema.Model
         public Cinema(string name, string id)
         {
             this.CinemaId = id;
-            this.CinemaName = id;
+            this.CinemaName = name;
         }
         public Cinema():this("n/a","0")
         {
@@ -33,6 +33,25 @@ namespace Belgian_Cinema.Model
 
             return CinemaName;
         }
-       
+
+        private string _NameKey;
+        public string NameKey
+        {
+            get
+            {
+                //If not set then
+                if (_NameKey == null)
+                {
+                    //get the first letter of the Name
+                    char key = char.ToLower(this.CinemaName[0]);
+                    if (key < 'a' || key > 'z')
+                    {
+                        key = '#';
+                    }
+                    _NameKey = key.ToString();
+                }
+                return _NameKey;
+            }
+        }
     }
 }

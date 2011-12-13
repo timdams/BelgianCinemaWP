@@ -85,7 +85,9 @@ namespace Belgian_Cinema
 
                 #region parse cinemas
 
-                List<Cinema> cinemas = new List<Cinema>();
+                if (doc != null)
+                {
+                    List<Cinema> cinemas = new List<Cinema>();
                 var theathers = (from p in doc.DocumentNode.Descendants("select")
                                  where p.GetAttributeValue("id", "n/a") == "theaterSelector"
                                  select p).SingleOrDefault();
@@ -260,6 +262,9 @@ namespace Belgian_Cinema
                     MessageBox.Show("This theater is not showing any movies this week.");
                 }
             }
+            else
+            MessageBox.Show("Cinebel site appears to be down. Please retry some other time");
+        }
             catch (Exception ex)
             {
 
