@@ -56,7 +56,8 @@ namespace Belgian_Cinema
             {
                 // Display the current frame rate counters.
                 Application.Current.Host.Settings.EnableFrameRateCounter = false;
-
+                //MetroGridHelper.IsVisible = true;
+                
                 // Show the areas of the app that are being redrawn in each frame.
                 //Application.Current.Host.Settings.EnableRedrawRegions = true;
 
