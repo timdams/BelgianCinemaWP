@@ -15,10 +15,11 @@ using Belgian_Cinema.Model;
 using Microsoft.Phone.Controls;
 using HtmlAgilityPack;
 using Microsoft.Phone.Net.NetworkInformation;
+using WP7Contrib.View.Transitions.Animation;
 
 namespace Belgian_Cinema
 {
-    public partial class MainPage : PhoneApplicationPage
+    public partial class MainPage : AnimatedBasePage
     {
         private AppSettings appSettings=new AppSettings();
         ObservableCollection<Movie>  movieList= new ObservableCollection<Movie>();
@@ -28,7 +29,7 @@ namespace Belgian_Cinema
         {
             InitializeComponent();
             lbresult.ItemsSource = movieList;
-           // UpdateMovieList();
+            AnimationContext = LayoutRoot;
       
         }
 

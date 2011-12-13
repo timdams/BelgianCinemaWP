@@ -13,10 +13,11 @@ using Belgian_Cinema.Classes;
 using Belgian_Cinema.Model;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
+using WP7Contrib.View.Transitions.Animation;
 
 namespace Belgian_Cinema
 {
-    public partial class movieDetails : PhoneApplicationPage
+    public partial class movieDetails : AnimatedBasePage
     {
         public Movie theMovie { get; set; }
         private ShareLinkTask shareLinkTask;
@@ -30,6 +31,8 @@ namespace Belgian_Cinema
 
             shareLinkTask= new ShareLinkTask();
             emailComposeTask= new EmailComposeTask();
+
+            AnimationContext = LayoutRoot;
         }
 
         private void ShareLinkBtn_Click(object sender, EventArgs e)
