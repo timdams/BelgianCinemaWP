@@ -1,12 +1,11 @@
 ﻿<Animation:AnimatedBasePage
-    x:Class="Belgian_Cinema.movieDetails"
+    x:Class="Belgian_Cinema.MovieDetails"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:Animation="clr-namespace:WP7Contrib.View.Transitions.Animation;assembly=WP7Contrib.View.Transitions"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -38,26 +37,18 @@
             <Image Grid.Column="0" Width="180" Source="{Binding CoverUrl}" Margin="5"></Image>
         </Grid>
 
-
-
-        <!--ContentPanel - place additional content here-->
+        
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="25,12,12,12">
-            <ListBox ItemsSource="{Binding Schedules}">
-              
-                <ListBox.ItemTemplate>
-                   
-                    <DataTemplate>
-                        
+            <ListBox ItemsSource="{Binding Schedules}">              
+                <ListBox.ItemTemplate>                   
+                    <DataTemplate>                     
                         <Grid Margin="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                
+                                <RowDefinition></RowDefinition>                               
                             </Grid.RowDefinitions>
 
                             <StackPanel Grid.Row="0" Orientation="Horizontal">
-         
-
                                 <TextBlock  Text="{Binding Day}" Style="{StaticResource PhoneTextAccentStyle}" Margin="10,0,0,0" ></TextBlock>
                                 <TextBlock  Text="{Binding Date}" Margin="10,0,0,0" ></TextBlock>
                                 <Grid Background="{Binding AudioVersieColor}" Margin="10,0,0,0">
@@ -65,12 +56,10 @@
                                 </Grid>
                                 <Grid Background="{Binding VideoVersieColor}" Margin="10,0,0,0">
                                     <TextBlock Text="{Binding VideoVersie}" />
-                                </Grid>
-                                
+                                </Grid>                               
                             </StackPanel>
 
-
-                            <ListBox Grid.Row="1" ItemsSource="{Binding ShowHours}" Margin="10,0,0,0"   >
+                            <ListBox Grid.Row="1" ItemsSource="{Binding ShowHours}" Margin="10,0,0,0" >
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -78,23 +67,18 @@
                                     </ItemsPanelTemplate>
                                 </ListBox.ItemsPanel>
                             </ListBox>
-
-                        </Grid>
-                        
+                        </Grid>                 
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Grid>
     </Grid>
- 
-    <!--Sample code showing usage of ApplicationBar-->
+     
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            
             <shell:ApplicationBarIconButton IconUri="/Images/email.png" Text="share movie" x:Name="ShareEmailBtn" Click="ShareEmailBtn_Click"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="share on social networks" Click="ShareLinkBtn_Click"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

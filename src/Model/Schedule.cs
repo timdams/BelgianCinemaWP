@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Belgian_Cinema.Model
 {
@@ -26,40 +16,29 @@ namespace Belgian_Cinema.Model
                 {
                     case "DV":
                         return "red";
-                        break;
                     case "OV":
                         return "orange";
-                        break;
                     case "NV":
                         return "blue";
-                        break;
                     case "FV":
                         return "green";
-                        break;
-                        
                     default:
                         return "teal";
-                        break;
-                        
                 }
             } 
         }
-        public string VideoVersieColor { get
-        {
-            switch (VideoVersie)
+        public string VideoVersieColor 
+        { 
+            get
             {
-                case "3D":
-                    return "DarkBlue";
-                    break;
-
-                case "Dig":
-                    return "Gray";
-                    break;
-                default:
-                    return "Gray";
-
+                switch (VideoVersie)
+                {
+                    case "3D": return "DarkBlue";
+                    case "Dig":return "Gray";
+                    default: return "Gray";
+                }
             }
-        }}
+        }
         public ObservableCollection<string> ShowHours { get; set; }
 
         public Schedule()
@@ -74,10 +53,8 @@ namespace Belgian_Cinema.Model
         public override string ToString()
         {
             string s = Day + " " + Date + ": ";
-            foreach (var hours in this.ShowHours)
-                s += hours + "  ";
 
-            return s;
+            return this.ShowHours.Aggregate(s, (current, hours) => current + (hours + "  "));
         }
     }
 }

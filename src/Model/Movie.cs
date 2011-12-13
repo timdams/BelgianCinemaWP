@@ -1,21 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Belgian_Cinema.Model
 {
-    public class Movie: INotifyPropertyChanged
+    public class Movie
     {
         public Movie()
         {
@@ -41,7 +31,7 @@ namespace Belgian_Cinema.Model
                 var q = (from s in Schedules where s.Date == now select s).FirstOrDefault();
                 if (q != null)
                     return Visibility.Visible;
-                else return Visibility.Collapsed;
+                return Visibility.Collapsed;
             }
         }
         
@@ -63,14 +53,9 @@ namespace Belgian_Cinema.Model
             foreach (var schedule in Schedules)
             {
                 res += string.Format("{0},{1}\t{2} \n\t", schedule.Day, schedule.Date, schedule.AudioVersie);
-                foreach (var time in schedule.ShowHours)
-                {
-                    res += time + ",\t\t\n";
-                }
+                res = schedule.ShowHours.Aggregate(res, (current, time) => current + (time + ",\t\t\n"));
             }
             return res;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        }   
     }
 }

@@ -37,14 +37,17 @@
 		<!-- Supported types are "text" and "xaml", where text is nicely formatted automatically, and XAML is handled by the built-in XamlReader -->
 		<Item Title="history"
 					Type="text">
-			Versions:
+			
 			1.2.0.0
       New settings page.
+      
       1.1.1.0
 			Minor performance and UI changes.
-			1.1.0.0
+			
+      1.1.0.0
 			See what's playing today in the main page.
-			1.0.0.0
+			
+      1.0.0.0
 			This is the initial public version.
 
 		</Item>

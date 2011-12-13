@@ -124,7 +124,7 @@ namespace System.Windows
                 childAsBorder.Child = null;
                 Deployment.Current.Dispatcher.BeginInvoke(() =>
                 {
-                    Grid newGrid = new Grid();
+                    var newGrid = new Grid();
                     childAsBorder.Child = newGrid;
                     newGrid.Children.Add(content);
                     PrepareGrid(frame, newGrid);
@@ -154,8 +154,7 @@ namespace System.Windows
         {
             var brush = new SolidColorBrush(_color);
 
-            _grid = new Grid();
-            _grid.IsHitTestVisible = false;
+            _grid = new Grid {IsHitTestVisible = false};
 
             // To support both orientations, unfortunately more visuals need to
             // be used. An alternate implementation would be to react to the
@@ -172,8 +171,8 @@ namespace System.Windows
                     {
                         Width = 25,
                         Height = 25,
-                        VerticalAlignment = System.Windows.VerticalAlignment.Top,
-                        HorizontalAlignment = System.Windows.HorizontalAlignment.Left,
+                        VerticalAlignment = VerticalAlignment.Top,
+                        HorizontalAlignment = HorizontalAlignment.Left,
                         Margin = new Thickness(x, y, 0, 0),
                         IsHitTestVisible = false,
                         Fill = brush,

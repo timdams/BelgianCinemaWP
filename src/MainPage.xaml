@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit" mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
     xmlns:delay="clr-namespace:Delay;assembly=PhonePerformance"
-    
     xmlns:Animation="clr-namespace:WP7Contrib.View.Transitions.Animation;assembly=WP7Contrib.View.Transitions"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -16,12 +15,10 @@
     SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-    <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            
+            <RowDefinition Height="*"/>            
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
@@ -34,9 +31,8 @@
             
         </StackPanel>
 
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="6,0,0,0" >
-
+        
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="6,0,0,0" >            
             <StackPanel x:Name="progressbar" Visibility="Collapsed" >
                 <TextBlock Text="Retrieving results"></TextBlock>
                 <ProgressBar x:Name="progressbarb"  IsIndeterminate="False"></ProgressBar>
@@ -52,35 +48,25 @@
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <toolkit:WrapPanel>
-
                                 <Grid  Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Image Tap="Button_Click" Margin="12"  Width="120" delay:LowProfileImageLoader.UriSource="{Binding CoverUrl}" ></Image>
+                                    <Image Tap="MovieImageClick" Margin="12"  Width="120" delay:LowProfileImageLoader.UriSource="{Binding CoverUrl}" ></Image>
                                     <Border BorderThickness="5" CornerRadius="20" BorderBrush="{StaticResource PhoneAccentBrush}" Visibility="{Binding PlayingToday}">
                                         </Border>
-                                    </Grid>
-                                
+                                    </Grid>                                
                             </toolkit:WrapPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </ScrollViewer>
-
-            
         </Grid>
     </Grid>
 
-
-
-
-    <!--Sample code showing usage of ApplicationBar-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="images/refresh.png" Text="refresh" x:Name="btnRefresh" Click="btnRefresh_Click"/>
-            <shell:ApplicationBarIconButton IconUri="images/appbar.feature.settings.rest.png" Text="settings" Click="ApplicationBarIconSettings_Click"/>
-            
+            <shell:ApplicationBarIconButton IconUri="images/refresh.png" Text="refresh" Click="btnRefresh_Click"/>
+            <shell:ApplicationBarIconButton IconUri="images/appbar.feature.settings.rest.png" Text="settings" Click="ApplicationBarIconSettings_Click"/>         
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="About" Click="ApplicationBarMenuItem_Click"/>
-
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

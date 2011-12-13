@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Belgian_Cinema.Model;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -35,10 +26,10 @@ namespace Belgian_Cinema
         {
 
 
-           bigCinemaList= new List<Cinema>()
-                          {
-                              new Cinema() {CinemaId = "786", CinemaName = "UGC Antwerpen"},
-                              new Cinema() {CinemaId = "787", CinemaName = "Metropolis"},
+           bigCinemaList= new List<Cinema>
+                              {
+                              new Cinema {CinemaId = "786", CinemaName = "UGC Antwerpen"},
+                              new Cinema {CinemaId = "787", CinemaName = "Metropolis"},
                               
                           };
 
