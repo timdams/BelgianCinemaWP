@@ -304,7 +304,6 @@ namespace Belgian_Cinema
             UpdateMovieList();
         }
 
-        
-        
+      
     }
 }
