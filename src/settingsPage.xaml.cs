@@ -40,11 +40,16 @@ namespace Belgian_Cinema
 
        private void longlistCinemas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            appSettings.CinemaSetting =(Cinema)longlistCinemas.SelectedItem;
 
-            txbCinema.DataContext = appSettings.CinemaSetting;
-            longlistCinemas.Visibility= Visibility.Collapsed;
-            txbNotifyBack.Visibility = Visibility.Visible;
+            if ((Cinema)longlistCinemas.SelectedItem != null)
+            {
+                appSettings.CinemaSetting = (Cinema) longlistCinemas.SelectedItem;
+
+                txbCinema.DataContext = appSettings.CinemaSetting;
+                longlistCinemas.Visibility = Visibility.Collapsed;
+                txbNotifyBack.Visibility = Visibility.Visible;
+                (App.Current as App).NeedUpdate = true;
+            }
         }
 
         private void changeCinema_Click(object sender, RoutedEventArgs e)
@@ -52,18 +57,25 @@ namespace Belgian_Cinema
             longlistCinemas.Visibility= Visibility.Visible;
         }
 
+        private bool firstChecked= false;
         private void tgLanguage_Checked(object sender, RoutedEventArgs e)
         {
+            if(firstChecked)
+                (App.Current as App).NeedUpdate = true;
             tgLanguage.Content = "French";
             appSettings.LanguageSetting = "fr";
             txbNotifyBack.Visibility = Visibility.Visible;
+            firstChecked = true;
         }
 
         private void tgLanguage_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (firstChecked)
+                (App.Current as App).NeedUpdate = true;
             tgLanguage.Content = "Dutch";
             appSettings.LanguageSetting = "nl";
             txbNotifyBack.Visibility = Visibility.Visible;
+            firstChecked = true;
         }      
     }
 }

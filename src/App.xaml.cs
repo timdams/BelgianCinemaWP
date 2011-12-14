@@ -11,6 +11,8 @@ namespace Belgian_Cinema
     {
         public enum Languages {French, Dutch}
 
+        
+        public bool NeedUpdate { get; set; }
         public Movie selectedMovie { get; set; }
         public List<Cinema> bigCinemaList;
         /// <summary>
@@ -32,7 +34,7 @@ namespace Belgian_Cinema
                               new Cinema {CinemaId = "787", CinemaName = "Metropolis"},
                               
                           };
-
+            NeedUpdate = true;
             // Global handler for uncaught exceptions. 
             UnhandledException += Application_UnhandledException;
 
@@ -69,12 +71,14 @@ namespace Belgian_Cinema
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            NeedUpdate = true;
         }
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            NeedUpdate = true;
         }
 
         // Code to execute when the application is deactivated (sent to background)

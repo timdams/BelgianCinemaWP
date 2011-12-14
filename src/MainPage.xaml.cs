@@ -21,8 +21,10 @@ namespace Belgian_Cinema
         public MainPage()
         {
             InitializeComponent();
+            UpdateMovieList();
             lbresult.ItemsSource = movieList;
-            AnimationContext = LayoutRoot;   
+            AnimationContext = LayoutRoot; 
+  
         }
 
         private void UpdateMovieList()
@@ -41,6 +43,7 @@ namespace Belgian_Cinema
                     downloadstring += "/bioscoop/" + appSettings.CinemaSetting.CinemaId + "/";
                     HtmlWeb.LoadAsync(downloadstring,
                                       DownloadMainHtmlCompleted);
+                    (App.Current as App).NeedUpdate = false;
                 }
 
                 else
@@ -60,7 +63,8 @@ namespace Belgian_Cinema
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            UpdateMovieList();
+            if((App.Current as App).NeedUpdate)
+                UpdateMovieList();
             base.OnNavigatedTo(e);
         }
 

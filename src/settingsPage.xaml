@@ -31,9 +31,9 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ItemTmpl">
-            <Grid>
-                <TextBlock Text="{Binding CinemaName}"></TextBlock>
-            </Grid>
+            <Border BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2">
+                <TextBlock Height="45" Text="{Binding CinemaName}"></TextBlock>
+            </Border>
         </DataTemplate>
     </Animation:AnimatedBasePage.Resources>
     
