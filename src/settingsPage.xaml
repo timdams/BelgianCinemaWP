@@ -15,13 +15,18 @@
 
     <Animation:AnimatedBasePage.Resources>
         <DataTemplate x:Key="GroupHeader">
-            <Border Background="{StaticResource PhoneAccentBrush}" Margin="{StaticResource PhoneTouchTargetOverhang}" Padding="{StaticResource PhoneTouchTargetOverhang}">
-                <TextBlock Text="{Binding Title}"/>
+            <Border Background="{StaticResource PhoneAccentBrush}" 
+                    Margin="{StaticResource PhoneTouchTargetOverhang}" 
+                    Padding="{StaticResource PhoneTouchTargetOverhang}">
+                <TextBlock Text="{Binding Title}" />
             </Border>
         </DataTemplate>
 
         <DataTemplate x:Key="GroupItem">
-            <Border Background="{StaticResource PhoneAccentBrush}" Margin="{StaticResource PhoneTouchTargetOverhang}" Padding="{StaticResource PhoneTouchTargetOverhang}">
+            <Border Background="{StaticResource PhoneAccentBrush}" 
+                    Padding="{StaticResource PhoneTouchTargetOverhang}"
+                    Width="99" Height="99" Margin="6">
+                    
                 <TextBlock Text="{Binding Title}" Style="{StaticResource PhoneTextLargeStyle}"/>
             </Border>
         </DataTemplate>
@@ -31,9 +36,9 @@
         </DataTemplate>
 
         <DataTemplate x:Key="ItemTmpl">
-            <Border BorderBrush="{StaticResource PhoneAccentBrush}" BorderThickness="2">
-                <TextBlock Height="45" Text="{Binding CinemaName}"></TextBlock>
-            </Border>
+            <Grid>
+                <TextBlock Height="45" Text="{Binding CinemaName}" Margin="12, 5,0,0"></TextBlock>
+            </Grid>
         </DataTemplate>
     </Animation:AnimatedBasePage.Resources>
     
@@ -64,7 +69,14 @@
                                       GroupHeaderTemplate="{StaticResource GroupHeader}"
                                       GroupItemTemplate="{StaticResource GroupItem}"
                                       ItemTemplate="{StaticResource ItemTmpl}"  
-                                      SelectionChanged="longlistCinemas_SelectionChanged"   /> 
+                                      SelectionChanged="longlistCinemas_SelectionChanged"   >
+                <toolkit:LongListSelector.GroupItemsPanel>
+                    <ItemsPanelTemplate>
+                        <toolkit:WrapPanel/>
+                    </ItemsPanelTemplate>
+                </toolkit:LongListSelector.GroupItemsPanel>
+
+            </toolkit:LongListSelector> 
         </Grid>
     </Grid>
 </Animation:AnimatedBasePage>

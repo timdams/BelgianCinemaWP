@@ -1,6 +1,7 @@
 ﻿using System;
 using Belgian_Cinema.Model;
 using Belgian_Cinema.UtilityClasses;
+using HtmlAgilityPack;
 using Microsoft.Phone.Tasks;
 using WP7Contrib.View.Transitions.Animation;
 
@@ -47,6 +48,19 @@ namespace Belgian_Cinema
 
             emailComposeTask.Body += "\n More info here:" + theMovie.MoreInfo;
             emailComposeTask.Show();
-        }    
+        }
+
+        //private void btnImdb_Click(object sender, System.Windows.RoutedEventArgs e)
+        //{
+        //    string downloadstring = "http://www.imdbapi.com/?t=" + theMovie.Title + "&r=XML";
+
+           
+        //    HtmlWeb.LoadAsync(downloadstring,
+        //                      DownloadMainHtmlCompleted);
+        //}
+        //void DownloadMainHtmlCompleted(object sender, HtmlDocumentLoadCompleted e)
+        //{
+
+        //}
     }
 }

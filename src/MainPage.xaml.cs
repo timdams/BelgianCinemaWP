@@ -88,7 +88,8 @@ namespace Belgian_Cinema
                                          where theather.GetAttributeValue("value", "error") != "error"
                                          select new Cinema
                                                     {
-                                                        CinemaId = theather.GetAttributeValue("value", "0"), CinemaName = theather.InnerText
+                                                        CinemaId = theather.GetAttributeValue("value", "0"),
+                                                        CinemaName = theather.InnerText
                                                     });
 
 
@@ -106,39 +107,41 @@ namespace Belgian_Cinema
                     (App.Current as App).bigCinemaList.Clear();
                     (App.Current as App).bigCinemaList = cinemas;
 
-                    #endregion
+                #endregion
 
 
-                #region parse movie
+                    #region parse movie
 
-                var movieNodes = from p in doc.DocumentNode.Descendants("div")
-                                    where p.GetAttributeValue("class", "unknown") == "ssbd collapsable"
-                                    select p;
+                    var movieNodes = from p in doc.DocumentNode.Descendants("div")
+                                     where p.GetAttributeValue("class", "unknown") == "ssbd collapsable"
+                                     select p;
 
-                movieList.Clear();
-                foreach (HtmlNode movieNode in movieNodes)
-                {
-                    ExtractMovieData(movieNode);
+                    movieList.Clear();
+                    foreach (HtmlNode movieNode in movieNodes)
+                    {
+                        ExtractMovieData(movieNode);
+                    }
+                    if (movieList.Count() == 0)
+                    {
+                        MessageBox.Show("This theater is not showing any movies this week.");
+                    }
                 }
-                if (movieList.Count() == 0)
-                {
-                    MessageBox.Show("This theater is not showing any movies this week.");
-                }   
+                else
+                    MessageBox.Show("Cinebel site appears to be down. Please retry some other time");
+                    #endregion
             }
-            else
-                MessageBox.Show("Cinebel site appears to be down. Please retry some other time");
-        }
-        catch (Exception ex)
-        {
+            catch (Exception ex)
+            {
 
-            MessageBox.Show("Error occured while fetching results. (Full error:" + ex.Message);
-        }
+                MessageBox.Show("Error occured while fetching results. (Full error:" + ex.Message);
+            }
+            finally
+            {
+                lbresult.Visibility = Visibility.Visible;
+                progressbar.Visibility = Visibility.Collapsed;
+                progressbarb.IsIndeterminate = false;
+            }
 
-        #endregion  
-
-            lbresult.Visibility = Visibility.Visible;
-            progressbar.Visibility = Visibility.Collapsed;
-            progressbarb.IsIndeterminate = false;
         }
 
         private void ExtractMovieData(HtmlNode movieNode)

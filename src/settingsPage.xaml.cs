@@ -41,7 +41,7 @@ namespace Belgian_Cinema
        private void longlistCinemas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            if ((Cinema)longlistCinemas.SelectedItem != null)
+            if (longlistCinemas.SelectedItem != null)
             {
                 appSettings.CinemaSetting = (Cinema) longlistCinemas.SelectedItem;
 
