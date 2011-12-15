@@ -250,26 +250,34 @@ namespace Belgian_Cinema
                     newSched.Date = schedDate.InnerText.Trim();
 
                 //VideoVersie
-                newSched.VideoVersie = (from p in schednode.Elements("td")
-                                        where
-                                            p.GetAttributeValue("class", "o").Contains(
-                                                "VideoVersion")
-                                        select p.Element("abbr")).SingleOrDefault().InnerText.Trim();
+                var vidvers = (from p in schednode.Elements("td")
+                                 where
+                                     p.GetAttributeValue("class", "o").Contains(
+                                         "VideoVersion")
+                                 select p.Element("abbr")).SingleOrDefault();
+                if (vidvers != null)
+                    newSched.VideoVersie = vidvers.InnerText.Trim();
 
                 //Audio
-                newSched.AudioVersie = (from p in schednode.Descendants("abbr")
-                                        where
-                                            p.GetAttributeValue("class", "N/A").Contains(
-                                                "audioVersion")
-                                        select p).SingleOrDefault().InnerText.Trim();
+                HtmlNode audiover = (from p in schednode.Descendants("abbr")
+                                 where
+                                     p.GetAttributeValue("class", "N/A").Contains(
+                                         "audioVersion")
+                                 select p).SingleOrDefault();
+                if (audiover != null)
+                    newSched.AudioVersie = audiover.InnerText.Trim();
 
                 //Showhours
-                var showhours = (from p in schednode.Descendants("div")
-                                 where p.GetAttributeValue("class", "o") == "hours"
-                                 select p).SingleOrDefault().Elements("span");
-                foreach (var showhour in showhours)
+                var singleOrDefault = (from p in schednode.Descendants("div")
+                                       where p.GetAttributeValue("class", "o") == "hours"
+                                       select p).SingleOrDefault();
+                if (singleOrDefault != null)
                 {
-                    newSched.ShowHours.Add(showhour.InnerText);
+                    var showhours = singleOrDefault.Elements("span");
+                    foreach (var showhour in showhours)
+                    {
+                        newSched.ShowHours.Add(showhour.InnerText);
+                    }
                 }
                 newMovie.Schedules.Add(newSched);
             }
