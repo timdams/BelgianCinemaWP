@@ -12,9 +12,33 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
+    <Animation:AnimatedBasePage.Resources>
+        <DataTemplate x:Key="PosterView">
+            <toolkit:WrapPanel>
+                <Grid  Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Tap="MovieImageClick" Margin="12"  Width="120" delay:LowProfileImageLoader.UriSource="{Binding CoverUrl}" ></Image>
+                    <Border BorderThickness="5" CornerRadius="20" BorderBrush="{StaticResource PhoneAccentBrush}" Visibility="{Binding PlayingToday}">
+                    </Border>
+                </Grid>
+            </toolkit:WrapPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ListView">
+            
+                <Grid  Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Image Tap="MovieImageClick" Margin="12"  Width="120" delay:LowProfileImageLoader.UriSource="{Binding CoverUrl}" ></Image>
+                    <TextBlock Text="{Binding Title}"></TextBlock>
+                </StackPanel>
+               
+                </Grid>
+            
+        </DataTemplate>
+    </Animation:AnimatedBasePage.Resources>
+    
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -38,24 +62,14 @@
                 <ProgressBar x:Name="progressbarb"  IsIndeterminate="False"></ProgressBar>
             </StackPanel>
 
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <ItemsControl Height="Auto" Name="lbresult" Width="Auto"  >
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" x:Name="scrolmover" >
+                <ItemsControl Height="Auto" Name="lbresult" Width="Auto" ItemTemplate="{StaticResource PosterView}" >
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <toolkit:WrapPanel Orientation="Vertical" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <toolkit:WrapPanel>
-                                <Grid  Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Image Tap="MovieImageClick" Margin="12"  Width="120" delay:LowProfileImageLoader.UriSource="{Binding CoverUrl}" ></Image>
-                                    <Border BorderThickness="5" CornerRadius="20" BorderBrush="{StaticResource PhoneAccentBrush}" Visibility="{Binding PlayingToday}">
-                                        </Border>
-                                    </Grid>                                
-                            </toolkit:WrapPanel>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
+
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
@@ -66,6 +80,7 @@
             <shell:ApplicationBarIconButton IconUri="images/refresh.png" Text="refresh" Click="btnRefresh_Click"/>
             <shell:ApplicationBarIconButton IconUri="images/appbar.feature.settings.rest.png" Text="settings" Click="ApplicationBarIconSettings_Click"/>         
             <shell:ApplicationBar.MenuItems>
+                <!--<shell:ApplicationBarMenuItem x:Name="switchview" Text="switch view" Click="switchview_Click"/>-->
                 <shell:ApplicationBarMenuItem Text="About" Click="ApplicationBarMenuItem_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>

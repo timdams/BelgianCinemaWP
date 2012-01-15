@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using Belgian_Cinema.Model;
 using Belgian_Cinema.UtilityClasses;
 using HtmlAgilityPack;
+using Microsoft.Phone.Controls;
 using WP7Contrib.View.Transitions.Animation;
 using NetworkInterface = System.Net.NetworkInformation.NetworkInterface;
 
@@ -303,6 +304,22 @@ namespace Belgian_Cinema
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             UpdateMovieList();
+        }
+
+        private void switchview_Click(object sender, EventArgs e)
+        {
+
+        
+            scrolmover.Content = null;
+
+            ListBox lb = new ListBox();
+            //b.Name = "lbresult";
+            DataTemplate switcher = this.Resources["ListView"] as DataTemplate;
+            lb.ItemTemplate = switcher;
+            lb.ItemsSource = movieList;
+            scrolmover.Content = lb;
+
+
         }
  
     }

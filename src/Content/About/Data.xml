@@ -38,6 +38,9 @@
 		<Item Title="history"
 					Type="text">
 			
+      1.2.1.0
+      Parsing bug removed: borders are back.
+      
 			1.2.0.0
       New settings page.
       Performance and UI changes.

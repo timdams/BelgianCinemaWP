@@ -40,8 +40,8 @@
 
         
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="25,12,12,12">
-            <ListBox ItemsSource="{Binding Schedules}">              
-                <ListBox.ItemTemplate>                   
+            <ItemsControl ItemsSource="{Binding Schedules}">              
+                <ItemsControl.ItemTemplate>                   
                     <DataTemplate>                     
                         <Grid Margin="5">
                             <Grid.RowDefinitions>
@@ -60,18 +60,18 @@
                                 </Grid>                               
                             </StackPanel>
 
-                            <ListBox Grid.Row="1" ItemsSource="{Binding ShowHours}" Margin="10,0,0,0" >
-                                <ListBox.ItemsPanel>
+                            <ItemsControl Grid.Row="1" ItemsSource="{Binding ShowHours}" Margin="10,0,0,0" >
+                                <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <StackPanel Orientation="Horizontal">
                                      </StackPanel>
                                     </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                            </ListBox>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
                         </Grid>                 
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Grid>
     </Grid>
      

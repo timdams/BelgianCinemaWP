@@ -27,7 +27,7 @@ namespace Belgian_Cinema.Model
         public Visibility PlayingToday { 
             get
             {
-                string now = string.Format("{0:00}", DateTime.Now.Day) + "/" + DateTime.Now.Month;
+                string now = string.Format("{0:00}", DateTime.Now.Day) + "/" + string.Format("{0:00}",DateTime.Now.Month);
                 var q = (from s in Schedules where s.Date == now select s).FirstOrDefault();
                 if (q != null)
                     return Visibility.Visible;
