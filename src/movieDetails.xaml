@@ -40,8 +40,16 @@
 
         
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="25,12,12,12">
-            <ItemsControl ItemsSource="{Binding Schedules}">              
-                <ItemsControl.ItemTemplate>                   
+            <ItemsControl ItemsSource="{Binding Schedules}">
+                <ItemsControl.Template>
+                    <ControlTemplate>
+                        <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+                <ItemsControl.ItemTemplate> 
+                    
                     <DataTemplate>                     
                         <Grid Margin="5">
                             <Grid.RowDefinitions>

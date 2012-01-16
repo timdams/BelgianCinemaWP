@@ -170,7 +170,9 @@ namespace Belgian_Cinema
 
             if (covernode != null)
             {
-                newMovie.CoverUrl = covernode.Element("a").Element("img").GetAttributeValue("src", "n/a");
+                newMovie.CoverUrl =
+                    (covernode.Element("a").Element("img").GetAttributeValue("src", "n/a")).Replace("/small/",
+                                                                                                    "/medium/");
             }
 
             //Shortinfo
