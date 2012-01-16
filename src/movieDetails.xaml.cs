@@ -1,13 +1,11 @@
 ﻿using System;
 using Belgian_Cinema.Model;
 using Belgian_Cinema.UtilityClasses;
-using HtmlAgilityPack;
 using Microsoft.Phone.Tasks;
-using WP7Contrib.View.Transitions.Animation;
 
 namespace Belgian_Cinema
 {
-    public partial class MovieDetails : AnimatedBasePage
+    public partial class MovieDetails 
     {
         public Movie theMovie { get; set; }
         private ShareLinkTask shareLinkTask;

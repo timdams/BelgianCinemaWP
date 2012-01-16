@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO.IsolatedStorage;
 using Belgian_Cinema.Model;
 
@@ -13,7 +14,9 @@ namespace Belgian_Cinema.UtilityClasses
             // The isolated storage key names of our settings
             const string LanguageSettingKeyName = "LanguageSetting";
             const string CinemaSettingKeyName = "CinemaSetting";
-            
+            const string CinemaListKeyName = "CinemaListSetting";
+            const string LatestDownloadedMovieListCacheKeyName = "LatestDownloadedMovieList";
+
 
             // The default value of our settings
             const string LanguageSettingDefault = "fr";
@@ -129,6 +132,42 @@ namespace Belgian_Cinema.UtilityClasses
                 }
             }
 
+            public DownloadedMovieListCache LatestDownloadedMovieListCache
+            {
+                get
+                {
+                    return GetValueOrDefault<DownloadedMovieListCache>(LatestDownloadedMovieListCacheKeyName,
+                                                                       new DownloadedMovieListCache()
+                                                                           {
+                                                                               LastDownloadedTime = new DateTime(1,1,1), MovieList = null, cinemasource = new Cinema("empty","-1"), Language = "unknown"
+                                                                           });
+
+                }
+                set
+                {
+                    if (AddOrUpdateValue(LatestDownloadedMovieListCacheKeyName, value))
+                    {
+                        Save();
+                    }
+                }
+            }
+
+            public List<Cinema> CinemaListSetting
+            {
+                get
+                {
+                    return GetValueOrDefault<List<Cinema>>(CinemaListKeyName,
+                                                           new List<Cinema>() { new Cinema("UGC Antwerpen", "786"), new Cinema { CinemaId = "787", CinemaName = "Metropolis" } });
+
+                }
+                set
+                {
+                    if (AddOrUpdateValue(CinemaListKeyName, value))
+                    {
+                        Save();
+                    }
+                }
+            }
 
 
         }

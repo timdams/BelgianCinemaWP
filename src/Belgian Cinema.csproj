@@ -53,6 +53,7 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>C:\Users\Tim\Desktop\Trunk\HAPPhone\Bin\Release\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="IsolatedStorageExplorer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -96,6 +97,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\DownloadedMovieListCache.cs" />
     <Compile Include="UtilityClasses\AppSettings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -112,6 +114,9 @@
       <DependentUpon>settingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UtilityClasses\GroupedCinemasHelperClasses.cs" />
+    <Compile Include="UtilityClasses\ImageCacheConverter.cs" />
+    <Compile Include="UtilityClasses\ImageCacher.cs" />
+    <Compile Include="UtilityClasses\IsoStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
