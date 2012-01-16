@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Belgian_Cinema.Model;
 using Belgian_Cinema.UtilityClasses;
 using HtmlAgilityPack;
-using Microsoft.Phone.Controls;
-using WP7Contrib.View.Transitions.Animation;
+
 using NetworkInterface = System.Net.NetworkInformation.NetworkInterface;
 
 namespace Belgian_Cinema
 {
-    public partial class MainPage : AnimatedBasePage
+    public partial class MainPage
     {
         private AppSettings appSettings = new AppSettings();
         ObservableCollection<Movie>  movieList = new ObservableCollection<Movie>();
@@ -22,29 +22,46 @@ namespace Belgian_Cinema
         public MainPage()
         {
             InitializeComponent();
-            UpdateMovieList();
             lbresult.ItemsSource = movieList;
-            AnimationContext = LayoutRoot; 
+            AnimationContext = LayoutRoot;
+            selectedCinema.DataContext = appSettings.CinemaSetting;
   
         }
 
         private void UpdateMovieList()
         {
+           
+            if (appSettings.LatestDownloadedMovieListCache.cinemasource.CinemaId != appSettings.CinemaSetting.CinemaId ||
+                DateTime.Now.Date.Subtract(appSettings.LatestDownloadedMovieListCache.LastDownloadedTime) > new TimeSpan(23, 59, 59)
+                || appSettings.LanguageSetting != appSettings.LatestDownloadedMovieListCache.Language)
+            {
+
+                DownloadHtmlMovieData();
+            }
+            else
+            {
+                MessageBox.Show("Using cached list");
+
+                movieList = new ObservableCollection<Movie>(appSettings.LatestDownloadedMovieListCache.MovieList);
+            }
+
+        }
+
+        private void DownloadHtmlMovieData()
+        {
             try
             {
                 if (NetworkInterface.GetIsNetworkAvailable())
                 {
-
                     lbresult.Visibility = Visibility.Collapsed;
                     progressbar.Visibility = Visibility.Visible;
                     progressbarb.IsIndeterminate = true;
-                    selectedCinema.DataContext = appSettings.CinemaSetting;
+                    
                     string downloadstring = "http://www.cinebel.be/" + appSettings.LanguageSetting;
 
                     downloadstring += "/bioscoop/" + appSettings.CinemaSetting.CinemaId + "/";
                     HtmlWeb.LoadAsync(downloadstring,
                                       DownloadMainHtmlCompleted);
-                    (App.Current as App).NeedUpdate = false;
                 }
 
                 else
@@ -64,8 +81,11 @@ namespace Belgian_Cinema
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
-            if((App.Current as App).NeedUpdate)
+            //if((App.Current as App).NeedUpdate)
                 UpdateMovieList();
+                lbresult.ItemsSource = movieList;
+                AnimationContext = LayoutRoot;
+                selectedCinema.DataContext = appSettings.CinemaSetting;
             base.OnNavigatedTo(e);
         }
 
@@ -74,62 +94,19 @@ namespace Belgian_Cinema
             try
             {
                 HtmlDocument doc = e.Document;
+              
+                ParseHtmlFile(doc);
 
-                #region parse cinemas
+                var textw = new StringWriter();
+                doc.Save(textw);
 
-                if (doc != null)
-                {
-                    var cinemas = new List<Cinema>();
-                    var theathers = (from p in doc.DocumentNode.Descendants("select")
-                                     where p.GetAttributeValue("id", "n/a") == "theaterSelector"
-                                     select p).SingleOrDefault();
-                    if (theathers != null)
-                    {
-                        cinemas.AddRange(from theather in theathers.Elements("option")
-                                         where theather.GetAttributeValue("value", "error") != "error"
-                                         select new Cinema
-                                                    {
-                                                        CinemaId = theather.GetAttributeValue("value", "0"),
-                                                        CinemaName = theather.InnerText
-                                                    });
-
-
-                        int count = 0;
-                        foreach (var cinema in theathers.Elements("#text"))
-                        {
-
-                            if (cinema.InnerText != null && count < cinemas.Count && cinema.InnerText.Trim() != "")
-                            {
-                                cinemas[count].CinemaName = cinema.InnerText.Trim();
-                                count++;
-                            }
-                        }
-                    }
-                    (App.Current as App).bigCinemaList.Clear();
-                    (App.Current as App).bigCinemaList = cinemas;
-
-                #endregion
-
-
-                    #region parse movie
-
-                    var movieNodes = from p in doc.DocumentNode.Descendants("div")
-                                     where p.GetAttributeValue("class", "unknown") == "ssbd collapsable"
-                                     select p;
-
-                    movieList.Clear();
-                    foreach (HtmlNode movieNode in movieNodes)
-                    {
-                        ExtractMovieData(movieNode);
-                    }
-                    if (movieList.Count() == 0)
-                    {
-                        MessageBox.Show("This theater is not showing any movies this week.");
-                    }
-                }
-                else
-                    MessageBox.Show("Cinebel site appears to be down. Please retry some other time");
-                    #endregion
+                appSettings.LatestDownloadedMovieListCache = new DownloadedMovieListCache()
+                                {
+                                    cinemasource = appSettings.CinemaSetting,
+                                    LastDownloadedTime = DateTime.Now,
+                                    MovieList = movieList,
+                                    Language = appSettings.LanguageSetting
+                                };
             }
             catch (Exception ex)
             {
@@ -143,6 +120,69 @@ namespace Belgian_Cinema
                 progressbarb.IsIndeterminate = false;
             }
 
+        }
+
+        private void ParseHtmlFile(HtmlDocument doc)
+        {
+            #region parse cinemas
+
+            if (doc != null)
+            {
+                var cinemas = new List<Cinema>();
+                var theathers = (from p in doc.DocumentNode.Descendants("select")
+                                 where p.GetAttributeValue("id", "n/a") == "theaterSelector"
+                                 select p).SingleOrDefault();
+                if (theathers != null)
+                {
+                    cinemas.AddRange(from theather in theathers.Elements("option")
+                                     where theather.GetAttributeValue("value", "error") != "error"
+                                     select new Cinema
+                                                {
+                                                    CinemaId = theather.GetAttributeValue("value", "0"),
+                                                    CinemaName = theather.InnerText
+                                                });
+
+
+                    int count = 0;
+                    foreach (var cinema in theathers.Elements("#text"))
+                    {
+                        if (cinema.InnerText != null && count < cinemas.Count && cinema.InnerText.Trim() != "")
+                        {
+                            cinemas[count].CinemaName = cinema.InnerText.Trim();
+                            count++;
+                        }
+                    }
+                }
+                appSettings.CinemaListSetting.Clear();
+                appSettings.CinemaListSetting = cinemas;
+               
+
+                #endregion
+
+                #region parse movie
+
+                var movieNodes = from p in doc.DocumentNode.Descendants("div")
+                                 where p.GetAttributeValue("class", "unknown") == "ssbd collapsable"
+                                 select p;
+
+                movieList.Clear();
+                foreach (HtmlNode movieNode in movieNodes)
+                {
+                    ExtractMovieData(movieNode);
+                }
+
+                
+                //Succes
+
+                if (movieList.Count() == 0)
+                {
+                    MessageBox.Show("This theater is not showing any movies this week.");
+                }
+            }
+            else
+                MessageBox.Show("Cinebel site appears to be down. Please retry some other time");
+
+            #endregion
         }
 
         private void ExtractMovieData(HtmlNode movieNode)
@@ -299,30 +339,13 @@ namespace Belgian_Cinema
 
         private void ApplicationBarMenuItem_Click(object sender, EventArgs e)
         {
-            //NavigationService.Navigate(new Uri("/AboutPage.xaml", UriKind.RelativeOrAbsolute));
-            NavigationService.Navigate(new Uri("/YourLastAboutDialog;component/AboutPage.xaml", UriKind.Relative));
+           NavigationService.Navigate(new Uri("/YourLastAboutDialog;component/AboutPage.xaml", UriKind.Relative));
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            UpdateMovieList();
+            DownloadHtmlMovieData();
         }
 
-        private void switchview_Click(object sender, EventArgs e)
-        {
-
-        
-            scrolmover.Content = null;
-
-            ListBox lb = new ListBox();
-            //b.Name = "lbresult";
-            DataTemplate switcher = this.Resources["ListView"] as DataTemplate;
-            lb.ItemTemplate = switcher;
-            lb.ItemsSource = movieList;
-            scrolmover.Content = lb;
-
-
-        }
- 
     }
 }
