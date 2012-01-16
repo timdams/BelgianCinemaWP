@@ -38,21 +38,21 @@
 		<Item Title="history"
 					Type="text">
 			
-      1.3.0.0
-      Improved caching
-      Better quality images
-      
-      1.3.0.0
-      Parsing bug removed: borders are back.
-      
-			1.2.0.0
-      New settings page.
-      Performance and UI changes.
+			2.0.
+			Improved caching
+			Better quality images
 			
-      1.1.0.0
+			1.3
+			Parsing bug removed: borders are back.
+			
+			1.2
+			New settings page.
+			Performance and UI changes.
+			
+			1.1
 			See what's playing today in the main page.
 			
-      1.0.0.0
+			1.0
 			This is the initial public version.
 
 		</Item>
