@@ -56,13 +56,13 @@ namespace Belgian_Cinema
             longlistCinemas.Visibility= Visibility.Visible;
         }
 
-        private bool firstChecked= false;
+       
         private void tgLanguage_Checked(object sender, RoutedEventArgs e)
         {
             tgLanguage.Content = "French";
             appSettings.LanguageSetting = "fr";
             txbNotifyBack.Visibility = Visibility.Visible;
-            firstChecked = true;
+           
         }
 
         private void tgLanguage_Unchecked(object sender, RoutedEventArgs e)
@@ -70,7 +70,7 @@ namespace Belgian_Cinema
             tgLanguage.Content = "Dutch";
             appSettings.LanguageSetting = "nl";
             txbNotifyBack.Visibility = Visibility.Visible;
-            firstChecked = true;
+            
         }      
     }
 }

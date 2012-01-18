@@ -40,8 +40,6 @@ namespace Belgian_Cinema
             }
             else
             {
-                MessageBox.Show("Using cached list");
-
                 movieList = new ObservableCollection<Movie>(appSettings.LatestDownloadedMovieListCache.MovieList);
             }
 
@@ -97,16 +95,7 @@ namespace Belgian_Cinema
               
                 ParseHtmlFile(doc);
 
-                var textw = new StringWriter();
-                doc.Save(textw);
-
-                appSettings.LatestDownloadedMovieListCache = new DownloadedMovieListCache()
-                                {
-                                    cinemasource = appSettings.CinemaSetting,
-                                    LastDownloadedTime = DateTime.Now,
-                                    MovieList = movieList,
-                                    Language = appSettings.LanguageSetting
-                                };
+                
             }
             catch (Exception ex)
             {
@@ -177,6 +166,21 @@ namespace Belgian_Cinema
                 if (movieList.Count() == 0)
                 {
                     MessageBox.Show("This theater is not showing any movies this week.");
+                }
+                else
+                {
+
+                    //Save movie
+                    var textw = new StringWriter();
+                    doc.Save(textw);
+
+                    appSettings.LatestDownloadedMovieListCache = new DownloadedMovieListCache()
+                    {
+                        cinemasource = appSettings.CinemaSetting,
+                        LastDownloadedTime = DateTime.Now,
+                        MovieList = movieList,
+                        Language = appSettings.LanguageSetting
+                    };
                 }
             }
             else
