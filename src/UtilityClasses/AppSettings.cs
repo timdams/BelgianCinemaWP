@@ -13,9 +13,9 @@ namespace Belgian_Cinema.UtilityClasses
 
             // The isolated storage key names of our settings
             const string LanguageSettingKeyName = "LanguageSetting";
-            const string CinemaSettingKeyName = "CinemaSetting";
-            const string CinemaListKeyName = "CinemaListSetting";
-            const string LatestDownloadedMovieListCacheKeyName = "LatestDownloadedMovieList";
+            const string CinemaSettingKeyName = "CinemaSettingv2";
+            const string CinemaListKeyName = "CinemaListSettingv2";
+            const string LatestDownloadedMovieListCacheKeyName = "LatestDownloadedMovieListv2";
 
 
             // The default value of our settings

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Navigation;
 using Belgian_Cinema.Model;
+using Kawagoe.Storage;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -11,7 +13,7 @@ namespace Belgian_Cinema
     {
         
         public Movie selectedMovie { get; set; }
-
+        public ImageCache MainImageCache;
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -62,7 +64,11 @@ namespace Belgian_Cinema
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-           
+            MainImageCache = new PersistentImageCache("BelgianCinemav3cache")
+            {
+                ExpirationDelay = TimeSpan.FromDays(14),
+                MemoryCacheCapacity = 30
+            };
         }
 
         // Code to execute when the application is activated (brought to foreground)

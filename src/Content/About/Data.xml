@@ -38,7 +38,11 @@
 		<Item Title="history"
 					Type="text">
 			
-			2.0.
+			2.1
+      New, working caching
+      Big bugs gone (sorry about that)
+      
+      2.0.
 			Faster startup and caching
 			Better quality images
 			

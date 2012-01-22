@@ -35,7 +35,7 @@
                 <HyperlinkButton Content ="Open Cinebel-page" NavigateUri="{Binding MoreInfo}" TargetName="_blank" ></HyperlinkButton>
                 <!--<Button x:Name="btnImdb" Click="btnImdb_Click" Content="Open IMDB (experimental)"></Button>-->
             </StackPanel>
-            <Image Grid.Column="0" Width="180" Source="{Binding CoverUrl}" Margin="5"></Image>
+            <Image Grid.Column="0" Width="180" Source="{Binding CoverImage}" Margin="5"></Image>
         </Grid>
 
         

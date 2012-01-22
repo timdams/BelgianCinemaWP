@@ -114,9 +114,10 @@
       <DependentUpon>settingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UtilityClasses\GroupedCinemasHelperClasses.cs" />
-    <Compile Include="UtilityClasses\ImageCacheConverter.cs" />
-    <Compile Include="UtilityClasses\ImageCacher.cs" />
-    <Compile Include="UtilityClasses\IsoStore.cs" />
+    <Compile Include="UtilityClasses\KawagoeImageCache\ImageCache.cs" />
+    <Compile Include="UtilityClasses\KawagoeImageCache\OneShotDispatcherTimer.cs" />
+    <Compile Include="UtilityClasses\KawagoeImageCache\PersistentImageCache.cs" />
+    <Compile Include="UtilityClasses\KawagoeImageCache\SystemImageCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

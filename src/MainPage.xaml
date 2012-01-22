@@ -19,7 +19,7 @@
             <toolkit:WrapPanel>
                 <Grid  Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <!--<Image Tap="MovieImageClick" Margin="12"  Width="120" delay:LowProfileImageLoader.UriSource="{Binding CoverUrl}" ></Image>-->
-                    <Image Tap="MovieImageClick" Margin="12"  Width="120" Source="{Binding CoverUrl, Converter={StaticResource imageCacheConverter}}" ></Image>
+                    <Image Tap="MovieImageClick" Margin="12"  Width="120" Source="{Binding CoverImage}" ></Image>
                     <Border BorderThickness="5" CornerRadius="20" BorderBrush="{StaticResource PhoneAccentBrush}" Visibility="{Binding PlayingToday}">
                     </Border>
                 </Grid>

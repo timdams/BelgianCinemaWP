@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Belgian_Cinema.Model
 {
@@ -38,13 +39,15 @@ namespace Belgian_Cinema.Model
         public string Duration { get; set; }
 
         public string CoverUrl { get; set; }
-        public string MoreInfo
+
+        public ImageSource CoverImage
         {
-            get { return "http://www.cinebel.be" + moreInfo; }
-            set { moreInfo = value; }
+            get { return (App.Current as App).MainImageCache.Get(CoverUrl); }
         }
 
-        private string moreInfo;
+        public string MoreInfo { get; set; }
+
+
       
 
         public override string ToString()

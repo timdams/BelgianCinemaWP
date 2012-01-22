@@ -258,7 +258,7 @@ namespace Belgian_Cinema
                                 p.GetAttributeValue("class", "n/a") == "moviePersonList"
                             select p).SingleOrDefault();
             if (movieURL != null)
-                newMovie.MoreInfo = movieURL.Element("a").GetAttributeValue("href",
+                newMovie.MoreInfo = "http://www.cinebel.be" + movieURL.Element("a").GetAttributeValue("href",
                                                                             "n/a");
 
             //Schedule

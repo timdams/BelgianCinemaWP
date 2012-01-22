@@ -12,7 +12,4 @@
             Activated="Application_Activated" Deactivated="Application_Deactivated"/>
     </Application.ApplicationLifetimeObjects>
 
-    <Application.Resources>
-        <ImageCacherDemo:ImageCacheConverter x:Key="imageCacheConverter" />
-    </Application.Resources>
 </Application>
